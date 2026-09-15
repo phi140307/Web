@@ -1,190 +1,53 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bài tập tuần 5</title>
-  <style>
-    body {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
-      font-family: Arial, sans-serif;
-      background-color: white;
-    }
-
-    section {
-      margin-bottom: 20px;
-      padding: 15px;
-      border: 1px solid #cccccc;
-      border-radius: 5px;
-      background-color: white;
-    }
-
-    button,
-    input {
-      margin: 5px;
-      padding: 8px;
-    }
-
-    #hopAnHien {
-      width: 150px;
-      height: 80px;
-      margin-top: 10px;
-      color: white;
-      background-color: steelblue;
-      text-align: center;
-      line-height: 80px;
-    }
-
-    .nutXoa {
-      margin-left: 10px;
-      color: white;
-      background-color: red;
-      border: none;
-    }
-
-    #thongBaoLoi {
-      font-weight: bold;
-    }
-  </style>
+  <title>Document</title>
 </head>
 
 <body>
-  <section>
-    <h2>1. Đổi màu chữ khi click nút</h2>
-    <p id="vanBanDoiMau">This is paragraph text.</p>
-    <button id="nutDoiMau" type="button">Đổi màu đỏ</button>
-  </section>
+  <button id="maudo">Đổi màu đỏ</button>
+  <button id="maugreen">Đổi màu xanh</button>
 
-  <section>
-    <h2>2. Ẩn/hiện phần tử</h2>
-    <button id="nutAnHien" type="button">Ẩn/Hiện</button>
-    <div id="hopAnHien">Phần tử</div>
-  </section>
+  <p id="vanban">Đây là văn bản cần đổi màu.</p>
 
-  <section>
-    <h2>3. Đếm số lần click</h2>
-    <button id="nutDem" type="button">Click vào đây</button>
-    <p>Số lần đã click: <span id="soLanClick">0</span></p>
-  </section>
+  <button id="an">Ẩn </button>
+  <button id="hien">Hiện </button>
+  <p id="vanbananhien"> Văn bản ẩn hiện </p>
 
-  <section>
-    <h2>4. Thay đổi nội dung văn bản</h2>
-    <input id="noiDungMoi" type="text" placeholder="Nhập nội dung mới">
-    <button id="nutCapNhat" type="button">Cập nhật</button>
-    <p id="ketQuaCapNhat">Nội dung sẽ hiển thị ở đây.</p>
-  </section>
-
-  <section>
-    <h2>5. Đổi màu nền trang</h2>
-    <button class="nutMau" type="button" data-mau="lightcoral">Đỏ</button>
-    <button class="nutMau" type="button" data-mau="lightblue">Xanh</button>
-    <button class="nutMau" type="button" data-mau="lightyellow">Vàng</button>
-    <button class="nutMau" type="button" data-mau="lightgreen">Lục</button>
-  </section>
-
-  <section>
-    <h2>6 và 7. Thêm, xóa phần tử trong danh sách</h2>
-    <input id="congViecMoi" type="text" placeholder="Nhập công việc">
-    <button id="nutThem" type="button">Thêm</button>
-    <ul id="danhSachCongViec"></ul>
-  </section>
-
-  <section>
-    <h2>8. Kiểm tra độ dài chuỗi</h2>
-    <input id="chuoiKiemTra" type="text" placeholder="Nhập nội dung">
-    <p>Số ký tự đã nhập: <span id="soKyTu">0</span></p>
-  </section>
-
-  <section>
-    <h2>9. Đổi kiểu chữ khi hover</h2>
-    <p id="vanBanHover">Rê chuột vào đoạn văn bản này.</p>
-  </section>
-
-  <section>
-    <h2>10. Form kiểm tra rỗng</h2>
-    <form id="formKiemTra">
-      <input id="duLieuForm" type="text" placeholder="Nhập dữ liệu">
-      <button type="submit">Gửi</button>
-    </form>
-    <p id="thongBaoLoi"></p>
-  </section>
+  <button id="click">Click</button>
 
   <script>
-    document.getElementById("nutDoiMau").addEventListener("click", function () {
-      document.getElementById("vanBanDoiMau").style.color = "red";
+    var btnRed = document.getElementById("maudo");
+    console.log(btnRed);
+    var btnGreen = document.getElementById("maugreen");
+    var para = document.getElementById("vanban");
+    console.log(para);
+
+    btnRed.addEventListener("click", function () {
+      para.style.color = "red";
+    });
+    btnGreen.addEventListener("click", function () {
+      para.style.color = "green";
     });
 
-    document.getElementById("nutAnHien").addEventListener("click", function () {
-      const hop = document.getElementById("hopAnHien");
-      hop.style.display = hop.style.display === "none" ? "block" : "none";
+    var btnAn = document.getElementById("an");
+    var btnHien = document.getElementById("hien");
+    var vanbananhien = document.getElementById("vanbananhien");
+
+    btnAn.addEventListener("click", function () {
+      vanbananhien.style.display = "none";
     });
-
-    let soLanClick = 0;
-    document.getElementById("nutDem").addEventListener("click", function () {
-      soLanClick++;
-      document.getElementById("soLanClick").textContent = soLanClick;
+    btnHien.addEventListener("click", function () {
+      vanbananhien.style.display = "block";
     });
-
-    document.getElementById("nutCapNhat").addEventListener("click", function () {
-      const noiDung = document.getElementById("noiDungMoi").value;
-      document.getElementById("ketQuaCapNhat").textContent = noiDung;
-    });
-
-    document.querySelectorAll(".nutMau").forEach(function (nut) {
-      nut.addEventListener("click", function () {
-        document.body.style.backgroundColor = nut.dataset.mau;
-      });
-    });
-
-    document.getElementById("nutThem").addEventListener("click", function () {
-      const input = document.getElementById("congViecMoi");
-      const noiDung = input.value.trim();
-
-      if (noiDung !== "") {
-        const li = document.createElement("li");
-        const nutXoa = document.createElement("button");
-        li.textContent = noiDung;
-        nutXoa.textContent = "Xóa";
-        nutXoa.type = "button";
-        nutXoa.className = "nutXoa";
-        nutXoa.addEventListener("click", function () {
-          li.remove();
-        });
-        li.appendChild(nutXoa);
-        document.getElementById("danhSachCongViec").appendChild(li);
-        input.value = "";
-      }
-    });
-
-    document.getElementById("chuoiKiemTra").addEventListener("input", function () {
-      document.getElementById("soKyTu").textContent = this.value.length;
-    });
-
-    const vanBanHover = document.getElementById("vanBanHover");
-    vanBanHover.addEventListener("mouseover", function () {
-      vanBanHover.style.fontWeight = "bold";
-      vanBanHover.style.fontStyle = "italic";
-    });
-    vanBanHover.addEventListener("mouseout", function () {
-      vanBanHover.style.fontWeight = "normal";
-      vanBanHover.style.fontStyle = "normal";
-    });
-
-    document.getElementById("formKiemTra").addEventListener("submit", function (event) {
-      event.preventDefault();
-      const duLieu = document.getElementById("duLieuForm").value.trim();
-      const thongBao = document.getElementById("thongBaoLoi");
-
-      if (duLieu === "") {
-        thongBao.textContent = "Vui lòng nhập dữ liệu.";
-        thongBao.style.color = "red";
-      } else {
-        thongBao.textContent = "Gửi dữ liệu thành công.";
-        thongBao.style.color = "green";
-      }
+    var click = 0;
+    var btnClick = document.getElementById("click");
+    btnClick.addEventListener("click", function () {
+      click++;
+      console.info("Số lần click :", click);
     });
   </script>
 </body>
